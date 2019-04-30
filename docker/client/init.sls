@@ -21,8 +21,8 @@ include:
   - docker.client.service
   {%- endif %}
 
-docker_python:
-  pkg.installed:
-    - names: {{ client.pkgs }}
+#docker_python:
+#  pkg.installed:
+#    - names: {{ client.pkgs }}
 
 {%- endif %}
