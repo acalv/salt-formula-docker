@@ -65,7 +65,7 @@ include:
   {%- if 'command' in container %}
     - command: {{container.command}}
   {%- endif %}
-  {%- if 'environment' in container and container.environment is able %}
+  {%- if 'environment' in container and container.environment is iterable %}
     - environment:
     {%- for variable, value in container.environment.items() %}
         - {{variable}}: {{value}}
