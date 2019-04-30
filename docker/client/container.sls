@@ -4,7 +4,7 @@
 include:
   - docker.client
 
-{%- for name, container in client.get('container', {}).iteritems() %}
+{%- for name, container in client.get('container', {}).items() %}
   {%- set id = name %}
   {%- set required_containers = [] %}
 
@@ -65,13 +65,13 @@ include:
   {%- if 'command' in container %}
     - command: {{container.command}}
   {%- endif %}
-  {%- if 'environment' in container and container.environment is iterable %}
+  {%- if 'environment' in container and container.environment is able %}
     - environment:
-    {%- for variable, value in container.environment.iteritems() %}
+    {%- for variable, value in container.environment.items() %}
         - {{variable}}: {{value}}
     {%- endfor %}
   {%- endif %}
-  {%- if 'ports' in container and container.ports is iterable %}
+  {%- if 'ports' in container and container.ports is able %}
     - port_bindings:
     {% for port in container.ports %}
       - {{ port }}
@@ -79,13 +79,13 @@ include:
   {%- endif %}
   {%- if volumes %}
     - volumes:
-    {%- for volume in volumes.iterkeys() %}
+    {%- for volume in volumes.keys() %}
       - {{volume}}
     {%- endfor %}
   {%- endif %}
   {%- if binds %}
     - binds:
-    {%- for bind in binds.iterkeys() %}
+    {%- for bind in binds.keys() %}
       - {{ bind }}
     {%- endfor %}
   {%- endif %}
@@ -122,7 +122,7 @@ include:
       {%- endif %}
     {%- endfor %}
   {%- endif %}
-  {%- for key, value in container.iteritems() %}
+  {%- for key, value in container.items() %}
     {%- if key not in blacklist.dockerng_running %}
     - {{ key }}: {{ value }}
     {%- endif %}
