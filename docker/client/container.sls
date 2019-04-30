@@ -71,7 +71,7 @@ include:
         - {{variable}}: {{value}}
     {%- endfor %}
   {%- endif %}
-  {%- if 'ports' in container and container.ports is able %}
+  {%- if 'ports' in container and container.ports is iterable %}
     - port_bindings:
     {% for port in container.ports %}
       - {{ port }}
