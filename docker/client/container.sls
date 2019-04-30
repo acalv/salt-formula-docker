@@ -21,8 +21,8 @@ include:
     - build: {{ container.build }}
     {%- endif %}
     - force: {{ container.force|default(False) }}
-    - require:
-      - pkg: docker_python
+#    - require:
+#      - pkg: docker_python
 
 {%- endif %}
 
