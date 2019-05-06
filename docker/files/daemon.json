@@ -2,7 +2,8 @@
 
 {#- legacy and backward compatibility -#}
 
-{%- if 'experimental' not in host.get('options') and host.experimental is defined %}
+
+{%- if 'experimental' not in host.get('options', False) and host.experimental is defined %}
   {% do host.options.update({"experimental": host.experimental}) %}
 {%- endif -%}
 
