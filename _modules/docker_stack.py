@@ -76,8 +76,8 @@ def _parseps(ps_output):
         ps_data['node'] = line_data[3]
         ps_data['desired_state'] = line_data[4]
         ps_data['current_state'] = line_data[5]
-	ps_data['error'] = line_data[6]
-	ps_data['ports'] = line_data[7]
+        ps_data['error'] = line_data[6]
+        ps_data['ports'] = line_data[7]
         # TODO: Grab error and ports ?
 
         data['containers'].append(ps_data)
