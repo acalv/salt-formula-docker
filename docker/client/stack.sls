@@ -18,6 +18,7 @@ docker_{{ app }}_compose:
   file.managed:
     - name: {{ client.compose.base }}/{{ app }}/docker-compose.yml
     - source: salt://docker/files/docker-compose.yml
+    - template: jinja
     - defaults:
         compose: {{ compose }}
         volume: {{ compose.volume|default({}) }}
