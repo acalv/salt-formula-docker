@@ -20,7 +20,7 @@ docker_{{ app }}_compose:
     - source: salt://docker/files/docker-compose.yml
     - template: jinja
     - defaults:
-        compose: {{ compose|yaml }}
+        compose: {{ compose|json }}
         volume: {{ compose.volume|default({}) }}
         service: {{ compose.service }}
         network: {{ compose.network|default({}) }}
