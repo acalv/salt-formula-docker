@@ -6,17 +6,15 @@ configs:
 {%- endif %}
 
 services:
-{% raw % }
   {%- for name, srv in service.items() %}
   {%- set env_file_set = False %}
   {{ name }}:
     {%- if 'env_file' in srv.keys() %}{%- set env_file_set = True %}{%- endif %}
-        {{ srv|yaml(False)|indent(4) }}
+        {{ srv|yaml(False)|indent(4)|safe }}
     {%- if not env_file_set and compose.environment is defined %}
     env_file: .env
     {%- endif %}
   {%- endfor %}
-{% endraw %}
 
 {%- if volume|default({}) %}
 volumes:
