@@ -27,8 +27,6 @@ docker_{{ app }}_compose:
     - require:
         - file: docker_{{ app }}_dir
 
-		{{compose.environment}}
-
     {%- if compose.environment is defined %}
 
 docker_{{ app }}_env:
