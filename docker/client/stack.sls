@@ -22,7 +22,7 @@ docker_{{ app }}_compose:
     - defaults:
         compose: {{ compose }}
         volume: {{ compose.volume|default({}) }}
-        service: {{ compose.service }}
+        service: {{ compose.service|safe }}
         network: {{ compose.network|default({}) }}
     - require:
         - file: docker_{{ app }}_dir
