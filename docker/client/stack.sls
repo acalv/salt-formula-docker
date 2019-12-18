@@ -22,7 +22,7 @@ docker_{{ app }}_compose:
     - defaults:
         compose: {{ compose }}
         volume: {{ compose.volume|default({}) }}
-        service: {{ compose.service }}
+        service: {{ compose.service|safe }}
         network: {{ compose.network|default({}) }}
     - require:
         - file: docker_{{ app }}_dir
@@ -92,7 +92,6 @@ docker_stack_{{ app }}:
     - shell: /bin/bash
     - cwd: {{ client.compose.base }}/{{ app }}
     - user: {{ compose.user|default("root") }}
-    - unless: "docker stack ls | grep '{{ app }}'"
     - require:
       - file: docker_{{ app }}_env
       - file: docker_{{ app }}_compose
